@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width,initial-scale=1.0">
+<title>
+ENJOY YOUR DAY
+</title>
+<style>
+.star{
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    background: yellow;
+    pointer-events: none;
+    box-shadow: 0 0 5px white;
+    border-radius: 50%;
+    animation: fall 3s linear infinite;
+}  
+@keyframes fall {0%{
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+}
+100%{
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0
+
+}
+    
+}
+
+body{
+    background-color:#fff1f2;
+    color:#5a2a41;
+    margin: 0;
+    padding: 0;
+
+}
+.ballon-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+
+}
+.ballon{
+    width: 30px;
+    height: 40px;
+    border-radius: 50%,50%,50%,50%;
+    position: absolute;
+    animation: floatDown 3s linear infinite;
+    opacity: 0.8;
+}
+.red{
+    background: #ff4b5c;left: 20%;animation-delay:0s ;
+}
+.blue{
+    background: #3b82f6;left: 40%;animation-delay:1s ;
+
+}
+.yellow{
+    background: #facc15;left: 60%;animation-delay:3s ;
+}
+.pink{
+    background: #ec4899;left: 80%;animation-delay:1s ;
+}
+.green{
+    background: #10b981;left: 10%;animation-delay:3s ;
+}
+.purple{
+    background: #5a2a41;left: 90%;animation-delay: 2s;
+}
+h4{
+    color:#6e6e6e;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    background-color: #f78da7;
+    color:#ffffff;
+    padding: 10px 20px;
+    border:#e8d7e9;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+@keyframes floatDown {
+    0%{
+    top: -50px;
+    transform: translateX(0);
+}
+50%{
+    transform: translateX(20px);
+}
+100%{
+    top: 110%;
+    transform: translateX(-20px);
+}
+    
+}
+@keyframes screenShake {
+    
+0%{
+    transform: translate(0px,0px);
+}
+10%{
+    transform: translate(-115px,-5px);
+}20%{
+    transform: translate(15px,15px);
+}30%{
+    transform: translate(-5px,5px);
+}40%{
+    transform: translate(5px,-5px);
+}
+50%{
+    transform: translate(-5px,-5px);
+}60%{
+    transform: translate(15px,15px);
+}70%{
+    transform: translate(-5px,5px);
+}80%{
+    transform: translate(5px,-5px);
+}90%{
+    transform: translate(-5px,-5px);
+}100%{
+    transform: translate(10px,10px);
+}
+    
+}
+.shake{
+    animation: screenShake 0.5s infinite;
+}
+</style>
+</head>
+<body>
+<div class="ballon-container">
+<div class="ballon purple"></div>
+<div class="ballon red"></div>
+<div class="ballon blue"></div>
+<div class="ballon yellow"></div>
+<div class="ballon pink"></div>
+<div class="ballon green"></div>
+</div>
+<div id="stars"></div>
+<div class="shake"></div>
+<header>
+    <h4>
+hey Fortune
+ <p>
+i tried doing something for u
+</p>
+<button id="startBtn">
+ tap to begin
+ </button>
+</h4>
+</header>
+<audio id="bg-music" src="images/your-song.mp3">       
+</audio>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>                
+<script>
+        function shootConfetti(){
+        confetti({
+         particleCount:150,
+         spread: 70 ,
+         origin: {y:0.6}
+
+        });
+    }
+    setInterval(shootConfetti,4000);
+    
+</script>
+<script>
+    window.addEventListener('load',() =>
+        confetti({
+         particleCount:150,
+         spread: 70 ,
+         origin: {y:0.6}
+
+        });
+    )
+</script>
+<script>
+    const starContainer=document.getElementById("stars");
+    for(let i=0;i<30;i++){
+        const star=document.createElement("div");
+        star.className="star";
+        star.style.left=Math.random()*100+"vh";
+        star.style.right=Math.random()*100+"vh";
+        star.style.animationDuration=3+ Math.random()*3+"s";
+        starContainer.appendChild(star);
+    }
+</script>
+</body>
+</html>
+    
